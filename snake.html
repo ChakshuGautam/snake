@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake JS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 flex justify-center items-center min-h-screen">
+    <div id="gameContainer" class="flex items-start p-4 bg-gray-800 rounded-lg shadow-lg">
+        <canvas id="gameCanvas" class="border border-gray-700 rounded"></canvas>
+        <div id="infoPanelOuter" class="ml-5">
+            <div id="infoPanel"
+                class="p-4 bg-gray-900 text-gray-50 font-sans text-sm w-40 border border-gray-700 rounded-md">
+                Loading...
+            </div>
+            <div id="controls"
+                class="mt-4 p-4 bg-gray-900 text-gray-50 font-sans text-sm w-40 border border-gray-700 rounded-md">
+                <div class="mb-3">
+                    <label for="solverSelect" class="block text-gray-300 text-xs font-medium mb-1">Solver:</label>
+                    <select id="solverSelect"
+                        class="w-full p-2 bg-gray-800 text-gray-50 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <option value="hamilton">Hamilton</option>
+                        <option value="greedy">Greedy</option>
+                        <option value="dqn">DQN (Simplified)</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="modeSelect" class="block text-gray-300 text-xs font-medium mb-1">Mode:</label>
+                    <select id="modeSelect"
+                        class="w-full p-2 bg-gray-800 text-gray-50 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <option value="normal">Normal (GUI)</option>
+                        <option value="bcmk">Benchmark (Console)</option>
+                        <!-- DQN Training modes are complex for JS direct port -->
+                        <!-- <option value="train_dqn_gui">Train DQN (GUI - Sim)</option> -->
+                        <!-- <option value="train_dqn">Train DQN (Console - Sim)</option> -->
+                    </select>
+                </div>
+                <button id="startGameBtn"
+                    class="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors duration-200">Start/Restart
+                    Game</button>
+                <p class="text-xs text-gray-400 mt-3">Use W/A/S/D to move, R to restart current, Space to Pause.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Paste the entire JavaScript code here
+        // (The large block from the next section)
+    </script>
+    <script src="./snake.js"></script> <!-- Or save to snake_game.js and link -->
+</body>
+
+</html>
