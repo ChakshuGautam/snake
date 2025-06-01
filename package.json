@@ -1,0 +1,12 @@
+{
+  "name": "snake-js",
+  "version": "1.0.0",
+  "description": "Snake game in JavaScript",
+  "main": "js/main.js",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
