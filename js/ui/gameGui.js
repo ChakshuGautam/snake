@@ -15,7 +15,7 @@ export class GameGUI {
         this._setupCanvas();
         this._initDrawParams();
         // Keybindings are typically handled by the Game class or a dedicated input manager
-        // this._initKeybindings();
+        // this._initKeybindings(); 
 
         this.gameLoopIntervalId = null;
     }
@@ -28,11 +28,11 @@ export class GameGUI {
     _initDrawParams() {
         this.grid_cell_width = this.conf.map_width / (this.gameMap.num_cols - 2);
         this.grid_cell_height = this.conf.map_height / (this.gameMap.num_rows - 2);
-        const pr = this.conf.grid_pad_ratio;
-        const fpr = 0.9 * pr;
+        const pr = this.conf.grid_pad_ratio; 
+        const fpr = 0.9 * pr; 
 
         this.dx1 = pr * this.grid_cell_width;
-        this.dx2 = (1 - pr) * this.grid_cell_width;
+        this.dx2 = (1 - pr) * this.grid_cell_width; 
         this.dy1 = pr * this.grid_cell_height;
         this.dy2 = (1 - pr) * this.grid_cell_height;
 
@@ -49,12 +49,12 @@ export class GameGUI {
         if (this.gameLoopIntervalId) clearInterval(this.gameLoopIntervalId);
 
         const logicLoop = () => {
-            gameLogicTickFn();
+            gameLogicTickFn(); 
         };
         this.gameLoopIntervalId = setInterval(logicLoop, this.conf.interval_draw);
 
         const renderLoop = () => {
-            this._updateContents();
+            this._updateContents(); 
             requestAnimationFrame(renderLoop);
         };
         requestAnimationFrame(renderLoop);
@@ -112,12 +112,12 @@ export class GameGUI {
     }
 
     _drawMapContents() {
-        for (let r = 0; r < this.gameMap.num_rows - 2; r++) {
+        for (let r = 0; r < this.gameMap.num_rows - 2; r++) { 
             for (let c = 0; c < this.gameMap.num_cols - 2; c++) {
                 this._drawGridCell(
-                    c * this.grid_cell_width,
-                    r * this.grid_cell_height,
-                    this.gameMap.point(new Pos(r + 1, c + 1)).type
+                    c * this.grid_cell_width, 
+                    r * this.grid_cell_height, 
+                    this.gameMap.point(new Pos(r + 1, c + 1)).type 
                 );
             }
         }
@@ -129,7 +129,7 @@ export class GameGUI {
         this.ctx.fillStyle = this.conf.color_body;
 
         switch (type) {
-            case PointType.EMPTY: break;
+            case PointType.EMPTY: break; 
             case PointType.WALL:
                 this.ctx.fillStyle = this.conf.color_wall;
                 this.ctx.fillRect(canvas_x, canvas_y, w, h);
@@ -149,25 +149,25 @@ export class GameGUI {
                 break;
             case PointType.HEAD_R:
                 this.ctx.fillStyle = this.conf.color_head;
-                this.ctx.fillRect(canvas_x, canvas_y + this.dy1, this.dx2 + this.dx1, this.dy2);
+                this.ctx.fillRect(canvas_x, canvas_y + this.dy1, this.dx2 + this.dx1, this.dy2); 
                 break;
             case PointType.HEAD_D:
                 this.ctx.fillStyle = this.conf.color_head;
                 this.ctx.fillRect(canvas_x + this.dx1, canvas_y, this.dx2, this.dy2 + this.dy1);
                 break;
-            case PointType.BODY_LU:
-                this.ctx.fillRect(canvas_x, canvas_y + this.dy1, this.dx1 + this.dx2, this.dy2);
-                this.ctx.fillRect(canvas_x + this.dx1, canvas_y, this.dx2, this.dy1 + this.dy2);
+            case PointType.BODY_LU: 
+                this.ctx.fillRect(canvas_x, canvas_y + this.dy1, this.dx1 + this.dx2, this.dy2); 
+                this.ctx.fillRect(canvas_x + this.dx1, canvas_y, this.dx2, this.dy1 + this.dy2); 
                 break;
-            case PointType.BODY_UR:
+            case PointType.BODY_UR: 
                 this.ctx.fillRect(canvas_x + this.dx1, canvas_y, this.dx2, this.dy1 + this.dy2);
                 this.ctx.fillRect(canvas_x + this.dx1, canvas_y + this.dy1, w - this.dx1, this.dy2);
                 break;
-            case PointType.BODY_RD:
+            case PointType.BODY_RD: 
                 this.ctx.fillRect(canvas_x + this.dx1, canvas_y + this.dy1, w - this.dx1, this.dy2);
                 this.ctx.fillRect(canvas_x + this.dx1, canvas_y + this.dy1, this.dx2, h - this.dy1);
                 break;
-            case PointType.BODY_DL:
+            case PointType.BODY_DL: 
                 this.ctx.fillRect(canvas_x + this.dx1, canvas_y + this.dy1, this.dx2, h - this.dy1);
                 this.ctx.fillRect(canvas_x, canvas_y + this.dy1, this.dx1 + this.dx2, this.dy2);
                 break;
@@ -177,7 +177,7 @@ export class GameGUI {
             case PointType.BODY_VER:
                 this.ctx.fillRect(canvas_x + this.dx1, canvas_y, this.dx2, h);
                 break;
-            default:
+            default: 
                 this.ctx.fillStyle = this.conf.color_body;
                 this.ctx.fillRect(canvas_x + this.dx1, canvas_y + this.dy1, this.dx2, this.dy2);
                 break;

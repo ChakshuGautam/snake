@@ -23,13 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setupAndRunGame() {
         // Access the currentGameInstance from game.js. If it exists, call _on_exit.
-        // Note: The Game class's constructor sets `currentGameInstance = this;`
-        // and `_on_exit()` nullifies it. This relies on `currentGameInstance`
+        // Note: The Game class's constructor sets `currentGameInstance = this;` 
+        // and `_on_exit()` nullifies it. This relies on `currentGameInstance` 
         // being a mutable variable exported from `game.js`.
         // A more robust approach might involve a dedicated Game manager or ensuring
         // `currentGameInstance` is explicitly passed around or set/unset via exported functions.
         // For now, we assume the `game.js` export `let currentGameInstance` works as a shared reference.
-
+        
         // To ensure we're acting on the instance from game.js, we should ideally call a method on it,
         // or `game.js` should provide a setter for its `currentGameInstance`.
         // However, the original code implies `currentGameInstance` is a global-like variable.
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // The Game class's `_on_exit` method correctly sets its module's `currentGameInstance` to null.
         // The Game class's `run` method correctly sets its module's `currentGameInstance = this`.
         // So, the existing mechanism within Game class should suffice.
-
+        
         // If there's an active game instance (tracked within game.js), tell it to exit.
         // This relies on `gameInstanceAccessor` correctly reflecting the shared state.
         // However, direct read via import might not be live-updated if `game.js` changes it.
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // or the new game's `run` should handle replacing it.
         // The original code's `if (currentGameInstance)` was in the same IIFE scope.
         // We'll rely on the Game constructor and run() method to manage currentGameInstance in game.js.
-
+        
         // The `Game` class itself will handle `currentGameInstance` via its constructor and `run()` method.
         // No explicit call to `currentGameInstance._on_exit()` here is needed if starting a new game
         // implicitly cleans up the old one by overwriting `currentGameInstance` in `game.js`.
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update the shared conf instance
         conf.solver_name = dict_solver[selectedSolverKey];
         conf.mode = dict_mode[selectedModeKey];
-
+        
         // Create and run the new game. The Game class's `run` method will set
         // the `currentGameInstance` in its own module (`game.js`).
         new Game(conf).run();

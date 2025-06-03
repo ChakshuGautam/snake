@@ -149,7 +149,7 @@ export class PathSolver extends BaseSolver {
                     this._table[nxt_test.x][nxt_test.y].visit = true;
                     currentPathDirecs.splice(idx, 1, test_direc, cur_direc, Direc.opposite(test_direc));
                     extended = true;
-                    break;
+                    break; 
                 }
             }
 
@@ -176,7 +176,7 @@ export class PathSolver extends BaseSolver {
         let tmp = des_pos.clone();
         while (!tmp.equals(src_pos)) {
             const parent_pos = this._table[tmp.x][tmp.y].parent;
-            if (!parent_pos) break;
+            if (!parent_pos) break; 
             path.appendleft(parent_pos.direc_to(tmp));
             tmp = parent_pos;
         }

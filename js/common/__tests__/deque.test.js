@@ -34,7 +34,7 @@ describe('Deque', () => {
     expect(deque.length).toBe(0);
     expect(deque.popleft()).toBeUndefined(); // Popleft from empty deque
   });
-
+  
   it('should handle front and back access', () => {
     expect(deque.front).toBeUndefined(); // Front of empty deque
     expect(deque.back).toBeUndefined();  // Back of empty deque
@@ -115,7 +115,7 @@ describe('Deque', () => {
     // Depending on strictness, this might be desired or not. Current behavior is it extends with empty slots.
     // For a robust Deque, set might be restricted to existing indices or throw error.
     // For now, testing existing behavior.
-    deque.set(5, 50);
+    deque.set(5, 50); 
     expect(deque.get(5)).toBe(50); // Array will have empty slots
     expect(deque.length).toBe(6); // Length changes due to sparse array behavior
   });

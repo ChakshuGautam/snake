@@ -1,4 +1,4 @@
-import { Pos } from '../pos.js';
+import { Pos } from '../pos.js'; 
 import { Direc } from '../constants.js';
 
 describe('Pos', () => {

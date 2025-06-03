@@ -11,7 +11,7 @@ describe('Map', () => {
 
   beforeEach(() => {
     // Map constructor takes total rows/cols including walls
-    map = new Map(testRows + 2, testCols + 2);
+    map = new Map(testRows + 2, testCols + 2); 
   });
 
   it('should initialize with correct dimensions and walls', () => {
@@ -28,13 +28,13 @@ describe('Map', () => {
     expect(map.point(new Pos(0, 1)).type).toBe(PointType.WALL); // Top wall
 
     // Check a playable area cell
-    expect(map.point(new Pos(1, 1)).type).toBe(PointType.EMPTY);
+    expect(map.point(new Pos(1, 1)).type).toBe(PointType.EMPTY); 
   });
 
   it('should correctly identify if a position is inside playable area', () => {
     expect(map.is_inside(new Pos(1, 1))).toBe(true);
     expect(map.is_inside(new Pos(testRows, testCols))).toBe(true);
-
+    
     expect(map.is_inside(new Pos(0, 0))).toBe(false); // Wall
     expect(map.is_inside(new Pos(testRows + 1, testCols + 1))).toBe(false); // Wall
     expect(map.is_inside(new Pos(1, testCols + 1))).toBe(false); // Outside right wall
@@ -44,7 +44,7 @@ describe('Map', () => {
   it('should correctly identify empty and safe positions', () => {
     const emptyPos = new Pos(1, 1);
     const wallPos = new Pos(0, 0);
-
+    
     // Default state from beforeEach has (1,1) as EMPTY
     expect(map.is_empty(emptyPos)).toBe(true);
     expect(map.is_safe(emptyPos)).toBe(true);
@@ -62,7 +62,7 @@ describe('Map', () => {
     expect(map.is_empty(snakeHeadPos)).toBe(false);
     expect(map.is_safe(snakeHeadPos)).toBe(false); // Snake parts are not safe
   });
-
+  
   it('should create and remove food', () => {
     const foodPos = new Pos(2,2);
     expect(map.has_food()).toBe(false);
@@ -88,7 +88,7 @@ describe('Map', () => {
     // Test that it doesn't create new food if one exists
     const foodAfterSecondCall = map.create_rand_food();
     expect(foodAfterSecondCall).toBeNull(); // Should return null as food already exists
-    expect(map.food.equals(initialFood)).toBe(true);
+    expect(map.food.equals(initialFood)).toBe(true); 
   });
 
   it('should not create random food if map is full', () => {
@@ -103,7 +103,7 @@ describe('Map', () => {
     expect(food).toBeNull();
     expect(map.has_food()).toBe(false);
   });
-
+  
   it('should correctly determine if map is full', () => {
     expect(map.is_full()).toBe(false); // Initially empty
 
@@ -118,7 +118,7 @@ describe('Map', () => {
         }
     }
     expect(map.is_full()).toBe(false);
-
+    
     // Fill the last cell
     let lastEmptyFound = false;
      for (let r = 1; r <= testRows; r++) {
@@ -165,7 +165,7 @@ describe('Map', () => {
     // Modify original map and check if copy is affected
     map.rm_food();
     map.point(new Pos(1,1)).type = PointType.EMPTY;
-
+    
     expect(mapCopy.has_food()).toBe(true); // Copy should still have food
     expect(mapCopy.point(new Pos(1,1)).type).toBe(PointType.HEAD_D); // Copy should retain old type
   });
